@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Gatito_app</string>
+    <string name="hola">Michi Game</string>
+    <string name="btn">Iniciar</string>
+</resources>
