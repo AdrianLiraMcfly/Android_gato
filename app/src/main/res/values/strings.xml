@@ -2,4 +2,7 @@
     <string name="app_name">Gatito_app</string>
     <string name="hola">Michi Game</string>
     <string name="btn">Iniciar</string>
+    <string name="computadora">Computadora:</string>
+    <string name="jugador">Jugador:</string>
+    <string name="tiempo_limite">Tiempo limite:</string>
 </resources>
