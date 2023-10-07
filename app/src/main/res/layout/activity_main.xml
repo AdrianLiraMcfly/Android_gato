@@ -34,5 +34,13 @@
         android:backgroundTint="#EDA8A8"
         android:text="@string/btn"
         android:textSize="40dp" />
+
+    <TextView
+        android:id="@+id/time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_below="@+id/btnini"
+        android:textSize="70sp"/>
 </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

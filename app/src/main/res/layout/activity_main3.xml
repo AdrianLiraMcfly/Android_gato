@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity3"
+    android:background="#EDA8A8">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/pc"
+            android:layout_width="350sp"
+            android:layout_height="80sp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="215dp"
+            android:layout_marginEnd="97dp"
+            android:text="@string/computadorares"
+            android:textSize="40sp"
+            />
+
+        <TextView
+            android:layout_width="300sp"
+            android:layout_height="80sp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="99dp"
+            android:layout_marginEnd="97dp"
+            android:text="@string/jugadorres"
+            android:textSize="40sp"
+            android:id="@+id/player"/>
+
+        <TextView
+            android:id="@+id/winer"
+            android:layout_width="300sp"
+            android:layout_height="80sp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="340dp"
+            android:layout_marginEnd="53dp"
+            android:textSize="40sp" />
+
+        <Button
+            android:id="@+id/btnbck"
+            android:layout_width="800sp"
+            android:layout_height="70dp"
+            android:layout_marginTop="450dp"
+            android:backgroundTint="#C18888"
+            android:text="@string/btnbck"
+            android:textSize="40sp" />
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

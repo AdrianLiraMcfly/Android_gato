@@ -12,8 +12,9 @@ import java.util.Arrays;
 import java.util.Random;
 
 public class MainActivity2 extends AppCompatActivity {
+    Bundle bundle = new Bundle();
     TextView txtNombre = findViewById(R.id.txtvic);
-    Integer[] botones={R.id.b1,R.id.b2,R.id.b3,R.id.b4,R.id.b5,R.id.b6,R.id.b7,R.id.b8,R.id.b9};
+
 
     int[] tab=new int[]{0,0,0,0,0,0,0,0,0};
      int estado=0;
@@ -21,12 +22,13 @@ public class MainActivity2 extends AppCompatActivity {
      int turno=1;
      int[] posgan= new int[]{-1,-1,-1};
     int numbtn;
+    Integer[] botones={R.id.b1,R.id.b2,R.id.b3,R.id.b4,R.id.b5,R.id.b6,R.id.b7,R.id.b8,R.id.b9};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
-        
+
     }
 
     public void selectgato(View v){
@@ -110,8 +112,11 @@ public class MainActivity2 extends AppCompatActivity {
     }
 
     public void terminpart(){
+        Intent in = new Intent(this, MainActivity3.class);
+        String conc = null;
         if (estado==1 ){
             txtNombre.setText("Ganaste");
+            conc="Ganaste";
             for (int i=0;i<3;i++){
                 Button b = (Button) findViewById(botones[posgan[i]]);
                 b.setBackgroundResource(R.drawable.palomita);
@@ -119,6 +124,7 @@ public class MainActivity2 extends AppCompatActivity {
         }
         else if (estado==-1){
             txtNombre.setText("Perdiste");
+            conc="Perdiste";
             for (int i=0;i<3;i++){
                 Button b = (Button) findViewById(botones[posgan[i]]);
                 b.setBackgroundResource(R.drawable.equis);
@@ -126,6 +132,11 @@ public class MainActivity2 extends AppCompatActivity {
         }
         else if (estado==2){
             txtNombre.setText("Empate");
+            conc="Empate";
         }
+        bundle.putString("resultado", conc);
+        in.putExtras(bundle);
+        startActivity(in);
     }
+
 }

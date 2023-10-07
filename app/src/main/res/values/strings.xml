@@ -5,4 +5,7 @@
     <string name="computadora">Computadora:</string>
     <string name="jugador">Jugador:</string>
     <string name="tiempo_limite">Tiempo limite:</string>
+    <string name="jugadorres">Jugador:</string>
+    <string name="computadorares">Computadora:</string>
+    <string name="btnbck">Volver a jugar</string>
 </resources>
