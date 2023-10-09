@@ -10,31 +10,34 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
-    Button ini= findViewById(R.id.btnini);
-    TextView txttime=findViewById(R.id.time);
+    Button ini;
+    TextView txttime;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
+        // Inicializa las vistas después de inflar el diseño de la actividad
+        ini = findViewById(R.id.btnini);
+        txttime = findViewById(R.id.time);
 
         ini.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent( MainActivity.this, MainActivity2.class );
-
-                startActivity( intent );
+                Intent intent = new Intent(MainActivity.this, MainActivity2.class);
+                startActivity(intent);
             }
         });
 
-        new CountDownTimer(10000, 1000){
-            public void onTick(long millisUntilFinished){
+        new CountDownTimer(10000, 1000) {
+            public void onTick(long millisUntilFinished) {
                 txttime.setText("Tiempo: " + millisUntilFinished / 1000);
             }
-            public  void onFinish(){
+
+            public void onFinish() {
                 startActivity(new Intent(MainActivity.this, MainActivity2.class));
             }
         }.start();
-        }
     }
+}

@@ -13,33 +13,41 @@ import java.util.Random;
 
 public class MainActivity2 extends AppCompatActivity {
     Bundle bundle = new Bundle();
-    TextView txtNombre = findViewById(R.id.txtvic);
+    TextView txtNombre;
+    int puntaje = 0;
 
-
-    int[] tab=new int[]{0,0,0,0,0,0,0,0,0};
-     int estado=0;
-     int fichaput=0;
-     int turno=1;
-     int[] posgan= new int[]{-1,-1,-1};
+    int[] tab = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0};
+    int estado = 0;
+    int fichaput = 0;
+    int turno = 1;
+    int[] posgan = new int[]{-1, -1, -1};
     int numbtn;
-    Integer[] botones={R.id.b1,R.id.b2,R.id.b3,R.id.b4,R.id.b5,R.id.b6,R.id.b7,R.id.b8,R.id.b9};
+    Integer[] botones = {R.id.b1, R.id.b2, R.id.b3, R.id.b4, R.id.b5, R.id.b6, R.id.b7, R.id.b8, R.id.b9};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
+        txtNombre = findViewById(R.id.txtvic);
+        fichaput = 0;
+        estado = 0;
 
-
+        numbtn = 0;
+        Button button1 = findViewById(R.id.b1);
+        selectgato(button1);
     }
+
+
 
     public void selectgato(View v){
         if (estado==0){
             turno=1;
             Button b = (Button) findViewById(v.getId());
+            numbtn= Arrays.asList(botones).indexOf(v.getId());
             if (tab[numbtn]==0){
                 b.setBackgroundResource(R.drawable.palomita);
+                b.setText("");
                 estado=1;
-                numbtn= Arrays.asList(botones).indexOf(v.getId());
-                v.setBackgroundResource(R.drawable.palomita);
                 tab[numbtn]=1;
                 fichaput++;
                 estado=getEstado();
@@ -49,9 +57,12 @@ public class MainActivity2 extends AppCompatActivity {
                     ia();
                     fichaput++;
                     terminpart();
-                }}
+                }
+            }
+        }
+    }
 
-    }}
+
 
     public void ia(){
         Random rand = new Random();
@@ -114,27 +125,29 @@ public class MainActivity2 extends AppCompatActivity {
     public void terminpart(){
         Intent in = new Intent(this, MainActivity3.class);
         String conc = null;
-        if (estado==1 ){
+        if (estado == 1) {
             txtNombre.setText("Ganaste");
-            conc="Ganaste";
-            for (int i=0;i<3;i++){
+            conc = "Ganaste";
+            puntaje++; // Incrementa el puntaje si ganó
+            for (int i = 0; i < 3; i++) {
                 Button b = (Button) findViewById(botones[posgan[i]]);
                 b.setBackgroundResource(R.drawable.palomita);
             }
-        }
-        else if (estado==-1){
+        } else if (estado == -1) {
             txtNombre.setText("Perdiste");
-            conc="Perdiste";
-            for (int i=0;i<3;i++){
+            conc = "Perdiste";
+            // No hace nada con el puntaje si perdió
+            for (int i = 0; i < 3; i++) {
                 Button b = (Button) findViewById(botones[posgan[i]]);
                 b.setBackgroundResource(R.drawable.equis);
             }
-        }
-        else if (estado==2){
+        } else if (estado == 2) {
             txtNombre.setText("Empate");
-            conc="Empate";
+            conc = "Empate";
         }
+
         bundle.putString("resultado", conc);
+        bundle.putInt("puntaje", puntaje);
         in.putExtras(bundle);
         startActivity(in);
     }
